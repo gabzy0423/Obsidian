@@ -86,62 +86,69 @@ flowchart TD
 
 ## 3. Actual Repository Structure
 
-The official repository contains the following major components.
+The following is a snapshot of the repository's major top-level components checked against the official GitHub tree on 2026-10-20. It is a learning map, not an exhaustive listing of every file.
 
 ```text
 ponytail/
 ├── .agents/
 ├── .claude-plugin/
+├── .clinerules/
 ├── .codex-plugin/
 ├── .cursor/rules/
 ├── .devin-plugin/
 ├── .github/
 ├── .grok-plugin/
+├── .kimi-plugin/
 ├── .kiro/steering/
+├── .openclaw/skills/
 ├── .opencode/
 ├── .qoder-plugin/
+├── .qoder/rules/
 ├── .windsurf/rules/
+├── assets/
+├── benchmarks/
 ├── commands/
+├── docs/
+├── examples/
 ├── hooks/
+├── i18n/
+├── pi-extension/
 ├── scripts/
 ├── skills/ponytail/SKILL.md
 ├── tests/
-├── benchmarks/
-├── examples/
-├── docs/
-├── assets/
-├── i18n/
-├── pi-extension/
+├── __init__.py
 ├── AGENTS.md
 ├── INSTALL.md
 ├── README.md
-├── LICENSE
+├── after-install.md
+├── gemini-extension.json
+├── opencode.json
 ├── package.json
 ├── plugin.json
-├── plugin.yaml
-└── gemini-extension.json
+└── plugin.yaml
 ```
 
-This is a simplified representation of the verified top-level structure, not an exhaustive listing of every file.
+The repository may change after this snapshot. Re-check the official tree when using it as an installation or implementation guide.
 
 ### 3.1 Component Responsibilities
 
 | Component | Responsibility |
 |---|---|
-| `skills/` | Contains agent skill definitions |
-| `AGENTS.md` | Provides compact coding instructions |
-| `commands/` | Contains command-related definitions |
-| `hooks/` | Contains lifecycle integration resources |
-| `scripts/` | Contains supporting automation scripts |
-| `.codex-plugin/` | Codex integration metadata |
-| `.claude-plugin/` | Claude Code plugin integration |
-| `.cursor/rules/` | Cursor instruction adapter |
-| `.opencode/` | OpenCode integration |
-| `tests/` | Tests for repository functionality |
+| `skills/` | Reusable agent skill instructions |
+| `AGENTS.md` | Compact always-on instruction alternative |
+| `commands/` | Named command definitions for supported hosts |
+| `hooks/` | Host lifecycle event configuration and scripts |
+| `scripts/` | Supporting executable automation |
+| `.codex-plugin/` | Codex plugin manifest and integration metadata |
+| `.claude-plugin/` | Claude Code plugin metadata |
+| `.cursor/rules/`, `.clinerules/`, `.windsurf/rules/`, `.qoder/rules/` | Host-specific instruction adapters |
+| `.devin-plugin/`, `.grok-plugin/`, `.kimi-plugin/`, `.qoder-plugin/` | Plugin adapters for those hosts |
+| `.openclaw/skills/`, `.opencode/`, `.kiro/steering/`, `.agents/` | Additional host-specific integration files |
+| `tests/` | Automated tests for repository functionality |
 | `benchmarks/` | Performance and evaluation materials |
 | `examples/` | Example implementations and comparisons |
 | `docs/` | Supporting technical documentation |
-| `INSTALL.md` | Installation instructions |
+| `INSTALL.md` | Host-specific installation instructions |
 
 ### 3.2 Architectural Separation
 
@@ -786,7 +793,7 @@ Ponytail
 - [Documentation](https://github.com/DietrichGebert/ponytail/tree/main/docs)
 
 > [!note] Source Verification
-> The main repository structure, primary instruction files, documented commands, and installation guidance were checked against the official repository.
+> The repository map above was checked against the official GitHub tree on 2026-10-20. The primary instruction files, documented commands, and installation guidance were also checked against the official repository.
 >
 > Some internal relationships are conceptual diagrams rather than verified execution traces. The next investigation should inspect the adapter and hook implementations directly.
 
