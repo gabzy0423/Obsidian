@@ -31,14 +31,14 @@ May supporting flows gaya ng archive/restore, comments, proof attachments, at no
 
 ## 4. Tech stack at bakit ito ang gamit
 
-| Bahagi | Current implementation | Simpleng paliwanag |
-|---|---|---|
-| Platform | Native Android, isang `:app` module | Isang Android application ang dini-develop at dini-deploy. |
-| Production code | Java 11 | Dito nakasulat ang app logic. |
-| UI | XML layouts at Material Components | Dito nakadefine ang screens at controls. |
-| Local storage | Room over SQLite | Room ang Android library na kumakausap sa local SQLite database. |
-| Data access | Repositories at DAOs | Repository ang app-facing operations; DAO ang database queries. |
-| Identity | Local accounts at session | Ang sign in ay para sa accounts na nasa installation na iyon. |
+| Bahagi          | Current implementation              | Simpleng paliwanag                                               |
+| --------------- | ----------------------------------- | ---------------------------------------------------------------- |
+| Platform        | Native Android, isang `:app` module | Isang Android application ang dini-develop at dini-deploy.       |
+| Production code | Java 11                             | Dito nakasulat ang app logic.                                    |
+| UI              | XML layouts at Material Components  | Dito nakadefine ang screens at controls.                         |
+| Local storage   | Room over SQLite                    | Room ang Android library na kumakausap sa local SQLite database. |
+| Data access     | Repositories at DAOs                | Repository ang app-facing operations; DAO ang database queries.  |
+| Identity        | Local accounts at session           | Ang sign in ay para sa accounts na nasa installation na iyon.    |
 
 Sa current Gradle config: minimum Android SDK **23**, target/compile SDK **37**, at application ID `com.example.grouptrack`. Ang Room database class ay kasalukuyang naka-**version 10**.
 
