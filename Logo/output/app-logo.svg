@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="462" height="462" viewBox="0 0 462 462" role="img" aria-labelledby="title">
+  <title id="title">G community app logo</title>
+  <defs>
+    <radialGradient id="tile" cx="48%" cy="35%" r="77%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".62" stop-color="#fcfeff"/>
+      <stop offset=".86" stop-color="#edf6ff"/>
+      <stop offset="1" stop-color="#c9dfff"/>
+    </radialGradient>
+    <linearGradient id="navy" x1=".85" y1="0" x2=".15" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#102f61"/>
+      <stop offset="1" stop-color="#0b153f"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2=".8" y2="1">
+      <stop stop-color="#009bff"/>
+      <stop offset="1" stop-color="#0048f4"/>
+    </linearGradient>
+    <linearGradient id="fold" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#0089ff"/>
+      <stop offset="1" stop-color="#00d1ed"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#d6e9ff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#d0e3fa" stop-opacity=".08"/>
+    </linearGradient>
+  </defs>
+  <path fill="#dfebfc" opacity=".4" d="M135 23H337C409 23 448 61 448 132V334C448 407 411 445 338 445H136C62 445 27 407 27 334V133C27 60 62 23 135 23Z"/>
+  <path fill="url(#tile)" stroke="#deebff" stroke-width="1.3" d="M137 20H335C408 20 445 58 445 130V331C445 404 408 442 335 442H139C66 442 29 404 29 331V131C29 58 66 20 137 20Z"/>
+  <path fill="url(#sheen)" d="M30 319C74 372 165 386 255 395C332 402 391 414 413 421C394 436 367 442 335 442H139C66 442 29 404 29 331Z"/>
+  <g id="symbol">
+    <path fill="url(#navy)" d="M241 79H225C143 79 77 145 77 227C77 266 92 302 119 329L148 299C152 294 147 287 147 280C147 275 149 271 150 268C142 255 137 241 137 226C137 177 176 138 225 138L302 137Z"/>
+    <path fill="url(#blue)" d="M241 79H301C318 79 330 85 342 97L385 139C391 145 394 151 394 161V189H361C354 189 351 187 345 181Z"/>
+    <path fill="url(#fold)" d="M241 79H301C318 79 330 85 342 97L381 135L301 137Z"/>
+    <path fill="url(#navy)" d="M274 199H357C380 199 397 219 397 244V288C397 333 357 369 299 370V349C299 330 290 315 278 306C286 300 294 299 301 301C321 305 332 320 338 340V244Q338 240 334 240H275C263 240 253 231 253 219C253 207 261 199 274 199Z"/>
+    <circle fill="url(#navy)" cx="179.5" cy="277.5" r="20.5"/>
+    <circle fill="url(#navy)" cx="295" cy="277.5" r="20.5"/>
+    <path fill="url(#navy)" d="M126 336C135 314 153 301 173 301C183 301 191 304 198 310C184 324 176 340 176 365C157 359 139 349 126 336Z"/>
+    <circle fill="url(#blue)" cx="237" cy="264" r="27"/>
+    <path fill="url(#blue)" d="M185 369V349C185 319 208 294 237 294C267 294 290 319 290 349V371H218C206 371 195 371 185 369Z"/>
+  </g>
+</svg>

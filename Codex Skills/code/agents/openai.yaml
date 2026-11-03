@@ -1,0 +1,6 @@
+interface:
+  display_name: "code"
+  short_description: "Agentic Coding implementation shortcut"
+  default_prompt: "Use $code for the requested implementation under the project's engineering guidance."
+policy:
+  allow_implicit_invocation: false

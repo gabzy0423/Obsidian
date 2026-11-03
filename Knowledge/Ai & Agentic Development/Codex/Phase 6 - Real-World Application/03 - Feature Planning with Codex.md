@@ -1,4 +1,4 @@
-﻿# 03 — Feature Planning with Codex
+# 03 — Feature Planning with Codex
 
 > **Course:** OpenAI Codex & Agentic Software Development  
 > **Phase:** 6 — Real-World Application  

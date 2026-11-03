@@ -1,4 +1,4 @@
-﻿# 02 — Superpowers: Installation and Setup
+# 02 — Superpowers: Installation and Setup
 
 > [!abstract] Lesson Information
 > **Repository:** [obra/superpowers](https://github.com/obra/superpowers)

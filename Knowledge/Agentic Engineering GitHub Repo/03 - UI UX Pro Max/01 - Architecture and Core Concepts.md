@@ -1,4 +1,4 @@
-﻿# 01 — UI/UX Pro Max: Architecture and Core Concepts
+# 01 — UI/UX Pro Max: Architecture and Core Concepts
 
 > [!abstract] Lesson Information
 > **Repository:** [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)

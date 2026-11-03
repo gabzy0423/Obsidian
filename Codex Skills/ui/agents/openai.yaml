@@ -1,0 +1,6 @@
+interface:
+  display_name: "ui"
+  short_description: "UI/UX Pro Max shortcut for interface work"
+  default_prompt: "Use $ui to help with the requested interface design or UI change."
+policy:
+  allow_implicit_invocation: false

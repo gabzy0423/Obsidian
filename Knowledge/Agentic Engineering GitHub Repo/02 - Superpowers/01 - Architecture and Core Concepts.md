@@ -1,4 +1,4 @@
-﻿# 01 — Superpowers: Architecture and Core Concepts
+# 01 — Superpowers: Architecture and Core Concepts
 
 > [!abstract] Lesson Information
 > **Repository:** [obra/superpowers](https://github.com/obra/superpowers)

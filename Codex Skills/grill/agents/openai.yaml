@@ -1,0 +1,6 @@
+interface:
+  display_name: "grill"
+  short_description: "Requirements interview and docs shortcut"
+  default_prompt: "Use $grill to clarify the requested feature and document agreed terminology and decisions."
+policy:
+  allow_implicit_invocation: false
