@@ -1,7 +1,7 @@
 # GroupTrack Reviewer — Phase 9: Settings and Legal
 
 > [!summary] Pinakaimportanteng tandaan
-> Sa **Settings** makikita ang profile, change password, Android notification toggle, Privacy Policy, Terms & Conditions, at logout. Ang Privacy Policy ay malinaw na nagsasabing **local SQLite** ang data at walang cloud sync sa current MVP.
+> Sa **Settings** makikita ang profile, change password, Android notification toggle, Privacy Policy, Terms & Conditions, at logout. **Local SQLite** ang live app data at walang GroupTrack cloud sync sa current MVP. Hiwalay rito ang posibleng Android system backup ng app data.
 
 ## 1. Settings screen at navigation
 
@@ -28,9 +28,9 @@ Mababasa ang dalawang text dialog sa **Create Account** at sa **Settings**. Hind
 | Privacy Policy | Account, profile, project, membership, at task data ay local sa SQLite; walang cloud sync sa current MVP; approved local members ay maaaring makakita ng project data; notification permission ay para sa task/project updates; maaaring mawala ang data kapag na-clear ang app data o na-uninstall ang app. |
 | Terms & Conditions | Gamitin ang app para sa lawful academic/team work; maglagay lamang ng impormasyong puwedeng ibahagi; ingatan ang credentials; panagutan ang accuracy ng project/task data; maaaring magbago ang MVP habang pinapahusay. |
 
-Ang mga entry ay **readable dialogs**, hindi hiwalay na web pages o cloud-hosted documents. Iwasang sabihing may online backup o cross-device access dahil wala iyon sa current implementation.
+Ang mga entry ay **readable dialogs**, hindi hiwalay na web pages o cloud-hosted documents. **Hindi tinatalakay ng kasalukuyang Privacy Policy text ang Android OS backup.** Naka-`allowBackup="true"` ang manifest at walang explicit exclusions sa kasalukuyang backup rules. Ayon sa Android Auto Backup documentation, maaaring maisama sa system backup ang app database, internal files, at shared preferences depende sa device at user settings. Kaya huwag sabihing “walang cloud backup”; ang tumpak na claim ay **walang sariling GroupTrack cloud sync o backup service**. Dapat pagpasiyahan ng team kung pahihintulutan ang OS backup at iayon doon ang app configuration at privacy text bago release.
 
-**Presentation line:** “Mababasa ang privacy at terms bago gumawa ng account at muli sa Settings. Tahasan naming sinasabi na local ang data at maaaring mawala ito kapag nabura ang app data.”
+**Presentation line:** “Mababasa ang privacy at terms bago gumawa ng account at muli sa Settings. Sa current MVP, SQLite sa device ang live data at walang GroupTrack cloud sync. Naka-enable pa ang Android backup capability sa manifest, kaya hindi namin ipapangakong walang posibleng system backup.”
 
 ## 5. Sample demo scenario
 
@@ -49,15 +49,15 @@ A: Hindi. Local session lang ang inaalis; nananatili ang account at project reco
 A: Gumagana pa rin ang in-app local records. Hindi lang maipapakita ang Android system notifications kung walang permission.
 
 **Q: May cloud backup ba ang personal at project data?**  
-A: Wala sa current MVP. Nasa local SQLite database ng device installation ang data.
+A: Walang sariling GroupTrack cloud backup o sync service. Pero naka-enable ang Android backup capability sa current manifest, kaya maaaring ma-back up ang app data ng OS depende sa device at user settings. Hindi pa ito na-device QA.
 
 **Q: Saan mababasa ang privacy at terms bago mag-register?**  
 A: Sa Create Account screen. Mababasa muli ang mga iyon sa Settings pagkatapos mag-sign in.
 
 ## 7. One-minute practice script
 
-“Ang Settings ang entry point para sa profile, password, Android notification display, privacy, terms, at logout. Ang profile at password changes ay dumadaan sa local account repository. Ang notification switch ay para sa system display; hindi nito binubura ang in-app notification records. Sa Create Account at Settings, nababasa ang Privacy Policy at Terms & Conditions. Malinaw sa privacy text na local SQLite ang data at wala pang cloud sync o backup ang current MVP. Ang logout ay session lang ang inaalis, kaya nananatili ang local records.”
+“Ang Settings ang entry point para sa profile, password, Android notification display, privacy, terms, at logout. Ang profile at password changes ay dumadaan sa local account repository. Ang notification switch ay para sa system display; hindi nito binubura ang in-app notification records. Sa Create Account at Settings, nababasa ang Privacy Policy at Terms & Conditions. Local SQLite ang live data at walang GroupTrack cloud sync, pero maaaring magkaroon ng Android system backup dahil naka-enable ito sa manifest. Ang logout ay session lang ang inaalis, kaya nananatili ang local records.”
 
 ## Sources at scope
 
-Sinuri noong **November 3, 2026**: `SettingsActivity`, `CreateAccountActivity`, `ProfileActivity`, `AuthRepository`, `SessionManager`, `AndroidNotificationHelper`, `DeadlineNotificationReceiver`, at `strings.xml`. Presentation reviewer ito batay sa current source; hindi live device QA. Ang detalye ng account at password rules ay nasa Phase 2; notification list at routing ay nasa Phase 8.
+Sinuri noong **November 3, 2026**: `SettingsActivity`, `CreateAccountActivity`, `ProfileActivity`, `AuthRepository`, `SessionManager`, `AndroidNotificationHelper`, `DeadlineNotificationReceiver`, `strings.xml`, `AndroidManifest.xml`, `backup_rules.xml`, at `data_extraction_rules.xml`. Android backup behavior reference: [Android Developers — Auto Backup](https://developer.android.com/identity/data/autobackup). Presentation reviewer ito batay sa current source; hindi live device QA o backup/restore test. Ang detalye ng account at password rules ay nasa Phase 2; notification list at routing ay nasa Phase 8.

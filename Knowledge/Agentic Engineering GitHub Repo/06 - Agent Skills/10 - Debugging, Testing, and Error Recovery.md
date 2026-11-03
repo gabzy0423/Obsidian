@@ -1,4 +1,4 @@
-﻿---
+---
 title: "10 — Debugging, Testing, and Error Recovery"
 course: "Agent Skills"
 repository: "addyosmani/agent-skills"

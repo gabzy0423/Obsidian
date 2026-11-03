@@ -9,6 +9,10 @@
 
 Sa current production path, walang Firebase/Firestore o cross-device sync. Ang dalawang local account ay makakakita ng iisang project kung nasa **parehong app installation** at may naaangkop na membership. Ang app data sa magkahiwalay na phone ay hindi awtomatikong magtutugma.
 
+### Android system backup ay hiwalay sa app sync
+
+Naka-`allowBackup="true"` ang current `AndroidManifest.xml`. Ang `backup_rules.xml` at `data_extraction_rules.xml` ay wala pang explicit exclusions. Ayon sa Android Auto Backup documentation, maaaring maisama sa OS backup ang SQLite database, app-internal files, at `SharedPreferences` depende sa device at user settings. **Hindi ito GroupTrack collaboration o real-time sync**: hindi nito ginagawang shared project workspace ang dalawang phone. Gayunman, hindi rin tumpak na sabihing garantisadong nasa isang device lamang ang lahat ng kopya ng app data. Kailangan pang pagpasiyahan at i-test ng team ang backup policy bago release; iayon din dito ang Privacy Policy text (Phase 9).
+
 ## 2. Walong Room entities at relasyon
 
 | Entity/table | Para saan? | Pangunahing ugnayan |
@@ -61,6 +65,9 @@ A: Room over local SQLite. Walang Firebase/Firestore sa current production data 
 **Q: Pareho ba ang database ng dalawang phone?**  
 A: Hindi. Bawat app installation ay may sariling local database; wala pang sync.
 
+**Q: Maaari bang ma-back up ng Android ang SQLite data?**  
+A: Posible sa current configuration dahil naka-enable ang backup capability at wala pang explicit exclusions. Depende ang aktuwal na backup/restore sa device at user settings; hindi pa ito na-device QA.
+
 **Q: Bakit may sample accounts at project agad?**  
 A: May automatic demo seeder sa current implementation para sa presentation/test data. Hiwalay iyon sa normal create/join workflow.
 
@@ -72,8 +79,8 @@ A: Hindi dapat iyon ipangako sa current code: maaaring i-reset ng seeder ang see
 
 ## 7. One-minute practice script
 
-“Ang GroupTrack ay gumagamit ng Room over SQLite sa mismong Android device. Ang screen ay tumatawag sa repository, ang repository sa DAO, at ang DAO ang nagbabasa o nagsusulat ng users, projects, memberships, tasks, history, attachments, at notifications. Version 10 ang current schema at may migrations mula sa dating versions para mapanatili ang local data. May automatic demo seeder na naghahanda ng sample accounts, project, tasks, at notifications para sa presentation. Hindi ito cloud sync; ang data ng dalawang phone ay magkahiwalay. May current seeder limitation sa seeded passwords at roles, kaya hindi namin ito ipapakitang permanenteng user change hangga't hindi naaayos ang code.”
+“Ang GroupTrack ay gumagamit ng Room over SQLite sa mismong Android device. Ang screen ay tumatawag sa repository, ang repository sa DAO, at ang DAO ang nagbabasa o nagsusulat ng users, projects, memberships, tasks, history, attachments, at notifications. Version 10 ang current schema at may migrations mula sa dating versions para mapanatili ang local data. May automatic demo seeder na naghahanda ng sample accounts, project, tasks, at notifications para sa presentation. Walang GroupTrack cloud sync; magkahiwalay ang live data ng dalawang phone, kahit maaaring may Android system backup sa current configuration. May seeder limitation sa seeded passwords at roles, kaya hindi namin ito ipapakitang permanenteng user change hangga't hindi naaayos ang code.”
 
 ## Sources at scope
 
-Sinuri noong **November 3, 2026**: `GroupTrackDatabase`, `DatabaseSeeder`, eight Room entity classes, `SessionManager`, `ProjectRepository`, at `GroupTrackDatabaseMigrationTest`. Source-backed reviewer ito; hindi live device QA at hindi migration test run sa turn na ito. Ang business workflows ay nasa Phases 2–10.
+Sinuri noong **November 3, 2026**: `GroupTrackDatabase`, `DatabaseSeeder`, eight Room entity classes, `SessionManager`, `ProjectRepository`, `GroupTrackDatabaseMigrationTest`, `AndroidManifest.xml`, `backup_rules.xml`, at `data_extraction_rules.xml`. Android backup behavior reference: [Android Developers — Auto Backup](https://developer.android.com/identity/data/autobackup). Source-backed reviewer ito; hindi live device QA, backup/restore test, o migration test run sa turn na ito. Ang business workflows ay nasa Phases 2–10.

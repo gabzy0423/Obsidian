@@ -20,7 +20,7 @@ Ang Members screen na ito ay para sa **project management**. Ang read-only Membe
 
 Ang action buttons ay hindi ipinapakita sa hindi leader, sa leader's own card, at sa archived project. May repository checks din sa leader at target project/role; hindi button visibility lang ang authorization. Pagkatapos ng role change o member removal, may local notification para sa target account kung linked ito.
 
-**Huwag ipagpalagay na automatic na nade-delete o nare-reassign ang dating tasks ng inalis na member.** Hiwalay na behavior iyon; ang tiyak na aksyon dito ay pag-alis ng membership.
+**Mahalagang limitasyon:** Walang automatic task reassignment bago alisin ang member. Ang `Task` ay may foreign key sa assigned/creator member na `NO_ACTION`, kaya maaaring pumalya ang removal kung may tasks na naka-reference pa sa member. Sa presentation, huwag ipangakong lahat ng member removal ay magtatagumpay; ipakita lamang ang case na nasubukan sa device.
 
 ## 3. Kaugnayan sa task review
 
@@ -44,7 +44,7 @@ A: Hindi. Leader lang ang puwede; chine-check ito sa repository.
 A: Isang active reviewer sa current implementation. Ang replacement ay nagbabalik muna sa dating reviewer sa `MEMBER` role sa iisang transaction.
 
 **Q: Ano ang kaibahan ng remove reviewer at remove member?**  
-A: Sa remove reviewer, role lang ang nawawala at member pa rin siya. Sa remove member, inaalis ang project membership.
+A: Sa remove reviewer, role lang ang nawawala at member pa rin siya. Sa remove member, sinusubukang alisin ang membership; maaaring tumanggi ang database kapag may dependent tasks.
 
 **Q: Puwede bang alisin ang leader?**  
 A: Hindi; tinatanggihan ito sa repository at wala ring remove action sa leader card.
@@ -54,8 +54,8 @@ A: Nakatago ang management actions sa archived project sa Members screen. Ang ar
 
 ## 6. One-minute practice script
 
-“Sa Manage Members screen, nakikita ng team ang project members, roles, join dates, at assigned at completed task counts. Ang project leader lang ang puwedeng magtalaga o magpalit ng reviewer at mag-alis ng member. Isang reviewer ang active sa project. Kapag inalis ang reviewer role, member pa rin ang tao; kapag inalis ang membership, mawawala ang project access niya. Hiwalay ang screen na ito sa contribution view sa Progress. Sinusuri ng repository ang role bago gumawa ng restricted action.”
+“Sa Manage Members screen, nakikita ng team ang project members, roles, join dates, at assigned at completed task counts. Ang project leader lang ang puwedeng magtalaga o magpalit ng reviewer at sumubok mag-alis ng member. Isang reviewer ang active sa project. Kapag inalis ang reviewer role, member pa rin ang tao. Ang membership removal ay maaaring pumalya kung may dependent task records; wala pang automatic reassignment. Hiwalay ang screen na ito sa contribution view sa Progress. Sinusuri ng repository ang role bago gumawa ng restricted action.”
 
 ## Sources at scope
 
-Sinuri noong **November 3, 2026**: `MembersActivity`, `ProjectRepository`, `ProjectSettingsBottomSheet`, `ProjectMember`, at `TaskReviewPolicy`. Presentation reviewer ito batay sa current source; hindi live device QA. Ang project creation/join flow ay nasa Phase 3, at ang contribution calculations ay nasa Phase 6.
+Sinuri noong **November 3, 2026**: `MembersActivity`, `ProjectRepository`, `ProjectSettingsBottomSheet`, `ProjectMember`, `Task`, `ProjectMemberDao`, at `TaskReviewPolicy`. Presentation reviewer ito batay sa current source; hindi live device QA. Ang project creation/join flow ay nasa Phase 3, at ang contribution calculations ay nasa Phase 6.
