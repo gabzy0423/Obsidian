@@ -22,6 +22,12 @@ Ang default member limit sa current entity ay **10** (kasama ang leader); puwede
 
 **Presentation line:** “Kapag gumawa ng project ang user, siya ang sole leader at unang member. Atomic ang pag-save ng project at leader membership para walang project na walang owner.”
 
+### Edit Project
+
+Sa project card o Project Task List menu, maaaring buksan ng **project creator/leader** ang Edit Project bottom sheet. Maaaring baguhin ang **title, subject, optional description, at deadline**. Required pa rin ang title, subject, at deadline; ang date picker ay may minimum na today. Pag successful ang save, nire-reload ang project display. Hindi nagbabago ang internal project ID, share code, o membership dahil project details lang ang ina-update.
+
+May access check sa database update: dapat ang `created_by` ng project ay ang signed-in user. Kung walang matching project/creator o pumalya ang update, error ang ibinabalik sa UI at hindi ito ituturing na successful edit.
+
 ## 3. Project ID vs project code
 
 | Term | Gamit |
@@ -95,6 +101,9 @@ A: `REJECTED` ang request at walang project access. May local feedback/notificat
 **Q: Delete ba ang archive?**  
 A: Hindi. Nananatili ang project at related records, at leader ang puwedeng mag-restore.
 
+**Q: Sino ang puwedeng mag-edit ng project details?**  
+A: Ang creator/leader. Title, subject, description, at deadline ang nae-edit; hindi nito pinapalitan ang project ID, code, o members.
+
 **Q: Puwede bang mag-edit ng tasks habang archived?**  
 A: Hindi. Visible at openable ang project, pero read-only ang task workflow hanggang ma-restore.
 
@@ -103,8 +112,8 @@ A: Hindi sa current MVP. Local lang ang project at request records sa device ins
 
 ## 10. One-minute practice script
 
-“Sa GroupTrack, ang signed-in user ay maaaring gumawa ng project na may title, subject, at deadline. Awtomatiko siyang leader at connected member. Gumagawa rin ang app ng shareable project code. Sa parehong device installation, ibang account ang maglalagay ng code para magsumite ng join request. Pending pa lang iyon; ang leader ang mag-aapprove o magre-reject. Sa approval, saka pa lang gagawa ng member record, subject sa member limit. Sa Dashboard, may search at Active, Completed, at Archived filters. Ang archive ay hindi deletion: makikita pa rin ang project at tasks, pero read-only ang task actions hanggang i-restore ng leader.”
+“Sa GroupTrack, ang signed-in user ay maaaring gumawa ng project na may title, subject, at deadline. Awtomatiko siyang leader at connected member. Ang leader ay maaari ring mag-edit ng project details. Gumagawa rin ang app ng shareable project code. Sa parehong device installation, ibang account ang maglalagay ng code para magsumite ng join request. Pending pa lang iyon; ang leader ang mag-aapprove o magre-reject. Sa approval, saka pa lang gagawa ng member record, subject sa member limit. Sa Dashboard, may search at Active, Completed, at Archived filters. Ang archive ay hindi deletion: makikita pa rin ang project at tasks, pero read-only ang task actions hanggang i-restore ng leader.”
 
 ## Sources at scope
 
-Sinuri noong **November 3, 2026**: `ProjectRepository`, `DashboardRepository`, `ProjectDao`, `Project`, `ProjectJoinRequest`, `ProjectCodeGenerator`, `DashboardActivity`, `ProjectTaskRepository`, at project overview/feature specs. Presentation reviewer ito; hindi live device QA. Phase 4 ang task creation, assignment, at My Tasks.
+Sinuri noong **November 3, 2026**: `ProjectRepository`, `DashboardRepository`, `ProjectDao`, `Project`, `ProjectJoinRequest`, `ProjectCodeGenerator`, `DashboardActivity`, `EditProjectBottomSheet`, `ProjectTaskListActivity`, `ProjectTaskRepository`, at project overview/feature specs. Presentation reviewer ito; hindi live device QA. Phase 4 ang task creation, assignment, at My Tasks.
